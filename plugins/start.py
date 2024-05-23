@@ -208,6 +208,6 @@ Unsuccessful: <code>{unsuccessful}</code></b>"""
 async def send_text(client: Bot, message: Message):
     if message.reply_to_message:
         query = await full_userbase()
-        os.environ['FORCE_SUB_CHANNEL'] = str(message.reply_to_message)
+        FORCE_SUB_CHANNEL = str(message.reply_to_message)
         pls_wait = await message.reply("<i>Updating Force Sub.. This will Take Some Time</i>")
         
