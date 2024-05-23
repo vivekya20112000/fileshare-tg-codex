@@ -11,7 +11,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated
 
 from bot import Bot
-from config import ADMINS, FORCE_MSG, START_MSG, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, PROTECT_CONTENT, FORCE_SUB
+from config import ADMINS, FORCE_MSG, START_MSG, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, PROTECT_CONTENT, FORCE_SUB_CHANNEL
 from helper_func import subscribed, encode, decode, get_messages
 from database.database import add_user, del_user, full_userbase, present_user
 
@@ -208,6 +208,6 @@ Unsuccessful: <code>{unsuccessful}</code></b>"""
 async def send_text(client: Bot, message: Message):
     if message.reply_to_message:
         query = await full_userbase()
-        os.environ['FORCE_SUB'] = message.reply_to_message
+        os.environ['FORCE_SUB_CHANNEL'] = message.reply_to_message
         pls_wait = await message.reply("<i>Updating Force Sub.. This will Take Some Time</i>")
         
